@@ -184,10 +184,12 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation files('lib/CloudonixSDK.aar')
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
@@ -207,6 +209,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation "androidx.preference:preference:1.1.1"
+    implementation "com.squareup.okhttp3:okhttp:4.9.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    implementation 'com.google.code.gson:gson:2.8.8'
 }
 
 // Run this once to be able to run the application with BUCK
