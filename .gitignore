@@ -25,10 +25,8 @@ project.xcworkspace
 # Android/IntelliJ
 #
 build/
-.idea
 .gradle
 local.properties
-*.iml
 *.hprof
 
 # node.js
@@ -48,7 +46,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-# Expo
-.expo/
-web-build/
