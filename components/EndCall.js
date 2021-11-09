@@ -1,14 +1,23 @@
-import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import React, { useState } from 'react';
+import {
+	SafeAreaView,
+	StyleSheet,
+	Button,
+	Text,
+	NativeModules
+} from 'react-native';
 
-export default function EndCall({ changeMode }) {
+const { CxModule } = NativeModules;
+
+export default function EndCall({ showMsg }) {
 	const endCallHandler = () => {
-		changeMode();
+		CxModule.endCall();
 	};
 	return (
-		<View style={styles.callScreen}>
+		<SafeAreaView style={styles.callScreen}>
+			<Text style={styles.txt}>{showMsg && 'Call Ended'}</Text>
 			<Button title='End Call' onPress={endCallHandler} color='red' />
-		</View>
+		</SafeAreaView>
 	);
 }
 
@@ -19,5 +28,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#212121',
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	txt: {
+		paddingBottom: 10,
+		color: 'white'
 	}
 });

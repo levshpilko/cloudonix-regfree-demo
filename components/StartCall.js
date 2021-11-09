@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-	View,
 	Text,
 	StyleSheet,
 	Button,
@@ -12,16 +11,23 @@ const { CxModule } = NativeModules;
 
 import axios from 'axios';
 
-const URL_CALL = 'http://192.168.1.200:3000/api/call';
+const URL_CALL = 'url/api/call'; //Add Your sever url
 
-export default function StartCall({ changeMode }) {
+export default function StartCall({ changeMode, hangUp }) {
+	useEffect(() => {
+		hangUp(false);
+	}, []);
+
 	const callHandler = async () => {
 		try {
 			let res = await axios.get(URL_CALL);
 			console.log(res.data);
-			changeMode();
+			changeMode(true);
 			CxModule.dial(res.data.msisdn, res.data.callToken, () => {
-				changeMode();
+				hangUp(true);
+				setTimeout(() => {
+					changeMode(false);
+				}, 1500);
 			});
 		} catch (err) {
 			console.log(err.response.data.message);

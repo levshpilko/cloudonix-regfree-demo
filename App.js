@@ -12,14 +12,18 @@ const { CxModule } = NativeModules;
 import EndCall from './components/EndCall';
 import StartCall from './components/StartCall';
 
-const URL_CALL = 'http://192.168.1.200:3000/api/call';
-const LICENSE_KEY = // insert key here
+const LICENSE_KEY = 'someKey'; //add Sdk key
 
 export default function App() {
-	const [iscallMode, setIsCallMode] = useState(false);
+	const [isStartCall, setIsStartCall] = useState(false);
+	const [isEndCall, setIsEndCall] = useState(false);
 
-	const callModeHandler = () => {
-		setIsCallMode(prevIsCallMode => !prevIsCallMode);
+	const callModeHandler = isCalling => {
+		setIsStartCall(isCalling);
+	};
+
+	const hangUpHandler = isHangUp => {
+		setIsEndCall(isHangUp);
 	};
 
 	useEffect(() => {
@@ -32,13 +36,13 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 			<StatusBar
-				barStyle={!iscallMode ? 'dark-content' : 'light-content'}
-				backgroundColor={!iscallMode ? '#fff' : '#212121'}
+				barStyle={!isStartCall ? 'dark-content' : 'light-content'}
+				backgroundColor={!isStartCall ? '#fff' : '#212121'}
 			/>
-			{!iscallMode ? (
-				<StartCall changeMode={callModeHandler} />
+			{!isStartCall ? (
+				<StartCall changeMode={callModeHandler} hangUp={hangUpHandler} />
 			) : (
-				<EndCall changeMode={callModeHandler} />
+				<EndCall showMsg={isEndCall} />
 			)}
 		</View>
 	);

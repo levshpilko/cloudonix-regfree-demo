@@ -13,6 +13,7 @@ import com.facebook.react.bridge.ReactMethod;
 
 import net.greenfieldtech.cloudonixsdk.api.interfaces.IVoIPObserver;
 import net.greenfieldtech.cloudonixsdk.api.models.RegistrationData;
+import net.greenfieldtech.cloudonixsdk.api.models.SDKConstants;
 import net.greenfieldtech.cloudonixsdk.appinterface.CloudonixSDKClient;
 import net.greenfieldtech.cloudonixsdk.appinterface.DefaultVoipObserver;
 
@@ -58,6 +59,8 @@ public class CxModule extends ReactContextBaseJavaModule {
 
         @Override
         public void onCallState(String key, CallState callState, String contactUrl) {
+            callKey = key;
+
             switch (callState){
                 case CALL_STATE_STARTING:
                     System.err.println("Starting call" +key + " to number: " + contactUrl);
@@ -73,6 +76,8 @@ public class CxModule extends ReactContextBaseJavaModule {
                     break;
                 case CALL_STATE_CONFIRMED:
                     System.err.println("Connected call" +key + " to number: " + contactUrl);
+                    cxClient.setAudioRoute(SDKConstants.AudioRoute.SPEAKER);
+                    
                     break;
                 case CALL_STATE_DISCONNECTED:
                 case CALL_STATE_DISCONNECTEDDUETOBUSY:
@@ -80,7 +85,7 @@ public class CxModule extends ReactContextBaseJavaModule {
                 case CALL_STATE_DISCONNECTEDDUETONETWORKCHANGE:
                 case CALL_STATE_DISCONNECTEDDUETONOMEDIA:
                 case CALL_STATE_DISCONNECTEDDUETOTIMEOUT:
-                    endCallCb.invoke();
+                    callDisconnectedCb.invoke();
                     System.err.println("Hanged up call " + key + " to number: " + contactUrl);
                     break;
 
@@ -94,7 +99,8 @@ public class CxModule extends ReactContextBaseJavaModule {
     };
 
     private Callback licenseCb;
-    private Callback endCallCb;
+    private Callback callDisconnectedCb;
+    private String callKey;
 
 
     private String[] callData = new String[2];
@@ -127,8 +133,13 @@ public class CxModule extends ReactContextBaseJavaModule {
     private void dial(String msisdn, String token,Callback cb ) {
         callData[0] = msisdn;
         callData[1] = token;
-        endCallCb = cb;
+        callDisconnectedCb = cb;
         isOnSipCompleted.thenRun(() -> cxClient.dialRegistrationFree(callData[0], callData[1]));
+    }
+
+    @ReactMethod
+    private void endCall(){
+        cxClient.hangup(callKey);
     }
 
     @Override
