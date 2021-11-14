@@ -3,38 +3,43 @@ import {
 	StyleSheet,
 	SafeAreaView,
 	StatusBar,
-	View,
 	NativeModules
 } from 'react-native';
-
-const { CxModule } = NativeModules;
 
 import EndCall from './components/EndCall';
 import StartCall from './components/StartCall';
 
-const LICENSE_KEY = 'someKey'; //add Sdk key
+const { CxModule } = NativeModules;
+
+const LICENSE_KEY = 'insert key here';
 
 export default function App() {
-	const [isStartCall, setIsStartCall] = useState(false);
-	const [isEndCall, setIsEndCall] = useState(false);
+	const [isStartCall, setIsStartCall] = useState(false); // boolean flag to track if a call was started
+	const [isEndCall, setIsEndCall] = useState(false); // boolean flag to track if a call was ended
 
+	// handeling the isStartCall state. gets a boolean
 	const callModeHandler = isCalling => {
 		setIsStartCall(isCalling);
 	};
 
+	// handeling the isEndCall state. gets a boolean
 	const hangUpHandler = isHangUp => {
 		setIsEndCall(isHangUp);
 	};
 
 	useEffect(() => {
-		CxModule.initCloudonixSDK(LICENSE_KEY);
-		CxModule.onLicense(() => {
-			console.log('initialized!!!');
-		});
+		try {
+			CxModule.initCloudonixSDK(LICENSE_KEY);
+			CxModule.onLicense(() => {
+				console.log('SDK initialized!');
+			});
+		} catch (err) {
+			alert('Something went wrong. Please try again :(');
+		}
 	}, []);
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<StatusBar
 				barStyle={!isStartCall ? 'dark-content' : 'light-content'}
 				backgroundColor={!isStartCall ? '#fff' : '#212121'}
@@ -44,7 +49,7 @@ export default function App() {
 			) : (
 				<EndCall showMsg={isEndCall} />
 			)}
-		</View>
+		</SafeAreaView>
 	);
 }
 
