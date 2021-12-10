@@ -12,24 +12,26 @@ import {
 import axios from 'axios';
 
 const { CxModule } = NativeModules;
+import callModes from '../shared/callModes';
 
-const URL_CALL =
-	'http://3397-2a0d-6fc2-4810-8600-949-87e4-866d-4293.ngrok.io/api/call';
-
-export default function StartCall({ changeMode, hangUp }) {
+export default function StartCall({ changeMode, hangUp, serverUrl }) {
 	useEffect(() => {
 		hangUp(false);
 	}, []);
 
 	const callHandler = async dest => {
 		try {
-			let res = await axios.get(`${URL_CALL}?dest=${dest}`);
+			console.log('Calling....');
+			const res = await axios.get(`${serverUrl}/api/call?dest=${dest}`);
 			console.log(res.data); //to delete before build
-			changeMode(true);
+
+			// changeMode(true);
+			changeMode(callModes.IN_CALL_MODE);
 			CxModule.dial(res.data.msisdn, res.data.callToken, () => {
 				hangUp(true);
 				setTimeout(() => {
-					changeMode(false);
+					changeMode(callModes.START_CALL_MODE);
+					// changeMode(false);
 				}, 1500);
 			});
 		} catch (err) {

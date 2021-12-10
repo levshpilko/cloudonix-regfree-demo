@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/../node_modules/expo-updates-interface/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-updates/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-notifications/lib/android/app" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-reanimated/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-screens/android" />
             <option value="$PROJECT_DIR$/../node_modules/unimodules-app-loader/android" />

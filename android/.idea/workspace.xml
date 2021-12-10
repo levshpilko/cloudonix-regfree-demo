@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
@@ -13,16 +14,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb670dcb-ecb0-4a36-8740-8d18912524e5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../backend/controllers/controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../backend/controllers/controllers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../backend/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../backend/routes/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cloudonixregfreedemo/CxModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cloudonixregfreedemo/CxModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cloudonixregfreedemo/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cloudonixregfreedemo/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../components/StartCall.js" beforeDir="false" afterPath="$PROJECT_DIR$/../components/StartCall.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\levsh\.android\avd\Pixel_4_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[273cdfa8f6217ece]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

@@ -1,6 +1,7 @@
 package com.cloudonixregfreedemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -101,6 +102,7 @@ public class CxModule extends ReactContextBaseJavaModule {
     private Callback licenseCb;
     private Callback callDisconnectedCb;
     private String callKey;
+    private ReactApplicationContext context;
 
 
     private String[] callData = new String[2];
@@ -109,6 +111,7 @@ public class CxModule extends ReactContextBaseJavaModule {
 
     public CxModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        context = reactContext;
     }
 
     @NonNull
@@ -140,6 +143,14 @@ public class CxModule extends ReactContextBaseJavaModule {
     @ReactMethod
     private void endCall(){
         cxClient.hangup(callKey);
+    }
+
+    @ReactMethod
+    private void invokeApp(){
+        System.err.println("************* Before invoke app");
+    context.startActivity(new Intent(context, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        System.err.println("************* After invoke app");
+
     }
 
     @Override
